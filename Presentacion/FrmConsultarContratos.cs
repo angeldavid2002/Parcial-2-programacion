@@ -7,6 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 using Logica;
 using Entidades;
+using System.Linq;
+
 namespace Presentacion
 {
     public partial class FrmConsultarContratos : Form
@@ -39,6 +41,15 @@ namespace Presentacion
         private void BtnConsultar_Click(object sender, EventArgs e)
         {
             MostrarDatosFiltrados(CmbTipoContrato.Text,DateTimeFecha.Value.Date);
+
+        }
+        private void EstablecerValores()
+        {
+            ContratoServices contratoServices = new ContratoServices();
+            List<Contrato> lista = contratoServices.ConsultarFiltrado(CmbTipoContrato.Text, DateTimeFecha.Value.Date).contratos;
+            String cantidadContratos = Convert.ToString(lista.Count);
+            TxtCantidadContratados.Text = cantidadContratos;
+            TxtValorTotal.Text = Convert.ToString(lista.Sum(x => x.valorContrato));
         }
         private bool ListaVacia(string tipoContrato, DateTime fecha)
         {
