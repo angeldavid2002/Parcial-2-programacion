@@ -7,44 +7,43 @@ using System.Text;
 using System.Windows.Forms;
 using Logica;
 using Entidades;
-
 namespace Presentacion
 {
-    public partial class FrmVisualizarContratos : Form
+    public partial class FrmConsultarContratos : Form
     {
-        public FrmVisualizarContratos()
+        public FrmConsultarContratos()
         {
             InitializeComponent();
         }
-        private void MostrarDatos()
+        private void MostrarDatosFiltrados(string tipoContrato, DateTime fecha)
         {
             ContratoServices contratoServices = new ContratoServices();
-            if (ListaVacia()==false)
+            if (ListaVacia(tipoContrato,fecha) == false)
             {
                 MessageBox.Show("Carga completada", "");
-                foreach (var Contrato in contratoServices.ConsultarTodos().contratos)
+                foreach (var Contrato in contratoServices.ConsultarFiltrado(tipoContrato,fecha).contratos)
                 {
                     string[] row = { Contrato.tipoContrato,Contrato.numeroIdentificacion,
                                     Contrato.nombreContratista,Contrato.fechaSuscripcion.ToString(),
                                     Contrato.valorContrato.ToString()};
                     ListViewItem lista = new ListViewItem(row);
-                    ListTodos.Items.Add(lista);
+                    ListFiltrados.Items.Add(lista);
                 }
             }
             else
             {
-                MessageBox.Show("No hay elementos en la lista","Error!");
+                MessageBox.Show("No hay elementos en la lista", "Error!");
             }
-            
+
         }
-        private bool ListaVacia()
+        private void BtnConsultar_Click(object sender, EventArgs e)
+        {
+            MostrarDatosFiltrados(CmbTipoContrato.Text,DateTimeFecha.Value.Date);
+        }
+        private bool ListaVacia(string tipoContrato, DateTime fecha)
         {
             ContratoServices contratoServices = new ContratoServices();
-            return contratoServices.ConsultarTodos().listaVacia;
-        }
-        private void BtnConsultarTodos_Click(object sender, EventArgs e)
-        {
-            MostrarDatos();
+            return contratoServices.ConsultarFiltrado(tipoContrato,fecha).listaVacia;
         }
     }
 }

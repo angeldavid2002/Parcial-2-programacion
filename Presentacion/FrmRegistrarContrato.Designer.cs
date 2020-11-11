@@ -148,6 +148,7 @@
             // 
             // CmbTipoContrato
             // 
+            this.CmbTipoContrato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbTipoContrato.FormattingEnabled = true;
             this.CmbTipoContrato.Items.AddRange(new object[] {
             "Prestación de servicio",

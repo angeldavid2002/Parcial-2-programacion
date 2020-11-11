@@ -27,6 +27,67 @@ namespace Logica
                 return "error de la aplicacion: " + (e.Message);
             }
         }
+        public class RespuestaContrato
+        {
+            public List<Contrato> contratos { get; set; }
+            public bool listaVacia { get; set; }
+            public string mensaje { get; set; }
+            public RespuestaContrato(List<Contrato> contratos)
+            {
+                this.contratos = contratos;
+                this.listaVacia = false;
+                this.mensaje = "lectura exitosa";
+            }
+            public RespuestaContrato(string mensaje)
+            {
+                this.listaVacia = true;
+                this.mensaje = mensaje;
+            }
+        }
+        public RespuestaContrato ConsultarTodos()
+        {
+            RespuestaContrato respuestaContrato;
+            try
+            {
+                if (contratoRepositorio.ConsultarTodos().Any())
+                {
+                    List<Contrato> contratos = contratoRepositorio.ConsultarTodos();
+                    respuestaContrato = new RespuestaContrato(contratos);
+                    return respuestaContrato;
+                }
+                else
+                {
+                    return respuestaContrato = new RespuestaContrato("no se encontraron elementos");
+                }
+            }
+            catch (Exception e)
+            {
+
+                return respuestaContrato = new RespuestaContrato("se produjo un error: " + e.Message);
+            }
+        }
+        public RespuestaContrato ConsultarFiltrado(string tipoContrato, DateTime fecha)
+        {
+            RespuestaContrato respuestaContrato;
+            try
+            {
+                if (contratoRepositorio.ConsultarTodos().Any())
+                {
+                    List<Contrato> contratos = contratoRepositorio.ConsultarFiltrado(tipoContrato,fecha);
+                    respuestaContrato = new RespuestaContrato(contratos);
+                    return respuestaContrato;
+                }
+                else
+                {
+                    return respuestaContrato = new RespuestaContrato("no se encontraron elementos");
+                }
+            }
+            catch (Exception e)
+            {
+
+                return respuestaContrato = new RespuestaContrato("se produjo un error: " + e.Message);
+            }
+        }
 
     }
 }

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.BtnRegistrarContrato = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.BtnConsultarContratos = new System.Windows.Forms.Button();
+            this.BtnVisualizar = new System.Windows.Forms.Button();
             this.PanelIzquierdo = new System.Windows.Forms.Panel();
             this.PanelPrincipal = new System.Windows.Forms.Panel();
             this.PanelIzquierdo.SuspendLayout();
@@ -47,32 +47,33 @@
             this.BtnRegistrarContrato.UseVisualStyleBackColor = true;
             this.BtnRegistrarContrato.Click += new System.EventHandler(this.BtnRegistrarContrato_Click);
             // 
-            // button2
+            // BtnConsultarContratos
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.Location = new System.Drawing.Point(0, 58);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(208, 29);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Consultar Contratos";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BtnConsultarContratos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnConsultarContratos.Location = new System.Drawing.Point(0, 58);
+            this.BtnConsultarContratos.Name = "BtnConsultarContratos";
+            this.BtnConsultarContratos.Size = new System.Drawing.Size(208, 29);
+            this.BtnConsultarContratos.TabIndex = 0;
+            this.BtnConsultarContratos.Text = "Consultar Contratos";
+            this.BtnConsultarContratos.UseVisualStyleBackColor = true;
+            this.BtnConsultarContratos.Click += new System.EventHandler(this.BtnConsultarContratos_Click);
             // 
-            // button3
+            // BtnVisualizar
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.Location = new System.Drawing.Point(0, 29);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(208, 29);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Visualizar Contratos";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.BtnVisualizar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnVisualizar.Location = new System.Drawing.Point(0, 29);
+            this.BtnVisualizar.Name = "BtnVisualizar";
+            this.BtnVisualizar.Size = new System.Drawing.Size(208, 29);
+            this.BtnVisualizar.TabIndex = 0;
+            this.BtnVisualizar.Text = "Visualizar Contratos";
+            this.BtnVisualizar.UseVisualStyleBackColor = true;
+            this.BtnVisualizar.Click += new System.EventHandler(this.BtnVisualizar_Click);
             // 
             // PanelIzquierdo
             // 
             this.PanelIzquierdo.BackColor = System.Drawing.Color.SteelBlue;
-            this.PanelIzquierdo.Controls.Add(this.button2);
-            this.PanelIzquierdo.Controls.Add(this.button3);
+            this.PanelIzquierdo.Controls.Add(this.BtnConsultarContratos);
+            this.PanelIzquierdo.Controls.Add(this.BtnVisualizar);
             this.PanelIzquierdo.Controls.Add(this.BtnRegistrarContrato);
             this.PanelIzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelIzquierdo.Location = new System.Drawing.Point(0, 0);
@@ -106,8 +107,8 @@
         #endregion
 
         private System.Windows.Forms.Button BtnRegistrarContrato;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button BtnConsultarContratos;
+        private System.Windows.Forms.Button BtnVisualizar;
         private System.Windows.Forms.Panel PanelIzquierdo;
         private System.Windows.Forms.Panel PanelPrincipal;
     }

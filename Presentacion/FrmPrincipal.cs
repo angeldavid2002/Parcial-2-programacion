@@ -36,9 +36,18 @@ namespace Presentacion
             AbrirForm(form);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void BtnVisualizar_Click(object sender, EventArgs e)
         {
+            LimpiarPanel();
+            FrmVisualizarContratos form = new FrmVisualizarContratos();
+            AbrirForm(form);
+        }
 
+        private void BtnConsultarContratos_Click(object sender, EventArgs e)
+        {
+            LimpiarPanel();
+            FrmConsultarContratos form = new FrmConsultarContratos();
+            AbrirForm(form);
         }
     }
 }
