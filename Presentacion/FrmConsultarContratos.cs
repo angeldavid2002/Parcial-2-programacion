@@ -45,5 +45,15 @@ namespace Presentacion
             ContratoServices contratoServices = new ContratoServices();
             return contratoServices.ConsultarFiltrado(tipoContrato,fecha).listaVacia;
         }
+        private void GuardarFiltrados(string tipoContrato, DateTime fecha)
+        {
+            ContratoServices contratoServices = new ContratoServices();
+            string respuesta=contratoServices.GuardarFiltrado(tipoContrato, fecha);
+            MessageBox.Show(respuesta, "");
+        }
+        private void BtnGuardar_Click(object sender, EventArgs e)
+        {
+            GuardarFiltrados(CmbTipoContrato.Text, DateTimeFecha.Value.Date);
+        }
     }
 }

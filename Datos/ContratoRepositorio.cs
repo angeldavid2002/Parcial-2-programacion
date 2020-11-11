@@ -9,13 +9,14 @@ namespace Datos
 {
     public class ContratoRepositorio
     {
-        private readonly string FileName = "Contrato.txt";
+        private readonly string FileNameContrato = "Contrato.txt";
+        private string FileNameFiltrado;
         public ContratoRepositorio()
         {
         }
         public void Guardar(Contrato contrato)
         {
-            FileStream file = new FileStream(FileName, FileMode.Append);
+            FileStream file = new FileStream(FileNameContrato, FileMode.Append);
             StreamWriter writer = new StreamWriter(file);
             writer.WriteLine(contrato.tipoContrato + ";" +
                 contrato.numeroIdentificacion + ";" +
@@ -28,7 +29,7 @@ namespace Datos
         public List<Contrato> ConsultarTodos()
         {
             List<Contrato> contratos = new List<Contrato>();
-            FileStream file = new FileStream(FileName, FileMode.OpenOrCreate, FileAccess.Read);
+            FileStream file = new FileStream(FileNameContrato, FileMode.OpenOrCreate, FileAccess.Read);
             StreamReader reader = new StreamReader(file);
             string linea = string.Empty;
             while ((linea = reader.ReadLine()) != null)
@@ -59,6 +60,27 @@ namespace Datos
                                  where C.tipoContrato.Equals(tipoContrato) && C.fechaSuscripcion.Equals(fecha)
                                  select C).ToList();
             return contratosFiltrados;
+        }
+        public void GuardarListaFiltrados(string tipoContrato, DateTime fecha)
+        {
+            FileNameFiltrado = tipoContrato+" "+fecha.ToString("ddMMyyyy")+".txt";
+            List<Contrato> contratosFiltrados= ConsultarFiltrado(tipoContrato, fecha);
+            foreach (Contrato item in contratosFiltrados)
+            {
+                GuardarFiltrados(item,FileNameFiltrado);
+            }
+        }
+        public void GuardarFiltrados(Contrato contrato,string nombreArchivo)
+        {
+            FileStream file = new FileStream(nombreArchivo, FileMode.Append);
+            StreamWriter writer = new StreamWriter(file);
+            writer.WriteLine(contrato.tipoContrato + ";" +
+                contrato.numeroIdentificacion + ";" +
+                contrato.nombreContratista + ";" +
+                contrato.fechaSuscripcion.ToString("dd/MM/yyyy") + ";" +
+                contrato.valorContrato + "");
+            writer.Close();
+            file.Close();
         }
     }
 }

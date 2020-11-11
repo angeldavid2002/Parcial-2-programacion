@@ -88,6 +88,18 @@ namespace Logica
                 return respuestaContrato = new RespuestaContrato("se produjo un error: " + e.Message);
             }
         }
+        public string GuardarFiltrado(string tipoContrato, DateTime fecha)
+        {
+            try
+            {
+                contratoRepositorio.GuardarListaFiltrados(tipoContrato,fecha);
+                return "se guardo exitosamente";
+            }
+            catch (Exception e)
+            {
 
+                return "error de la aplicacion: " + (e.Message);
+            }
+        }
     }
 }

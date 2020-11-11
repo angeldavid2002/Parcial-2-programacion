@@ -87,14 +87,14 @@
             this.PanelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelPrincipal.Location = new System.Drawing.Point(208, 0);
             this.PanelPrincipal.Name = "PanelPrincipal";
-            this.PanelPrincipal.Size = new System.Drawing.Size(974, 653);
+            this.PanelPrincipal.Size = new System.Drawing.Size(1274, 653);
             this.PanelPrincipal.TabIndex = 2;
             // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1182, 653);
+            this.ClientSize = new System.Drawing.Size(1482, 653);
             this.Controls.Add(this.PanelPrincipal);
             this.Controls.Add(this.PanelIzquierdo);
             this.Name = "FrmPrincipal";

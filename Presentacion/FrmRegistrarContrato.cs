@@ -19,17 +19,26 @@ namespace Presentacion
         private void GuardarContrato(Contrato contrato)
         {
             ContratoServices contratoServices = new ContratoServices();
-            contratoServices.Guardar(contrato);
+            string respuesta = contratoServices.Guardar(contrato);
+            MessageBox.Show(respuesta, "");
         }
         private void BtnRegistrar_Click(object sender, EventArgs e)
         {
-            contrato = new Contrato();
-            contrato.tipoContrato = CmbTipoContrato.SelectedItem.ToString();
-            contrato.numeroIdentificacion = TxtNumeroIdentificacion.Text;
-            contrato.nombreContratista = TxtNombreContratista.Text;
-            contrato.fechaSuscripcion = DateTimePickerFechaContrato.Value.Date;
-            contrato.valorContrato = Convert.ToDouble(TxtValorContrato.Text);
-            GuardarContrato(contrato);
+            try
+            {
+                contrato = new Contrato();
+                contrato.tipoContrato = CmbTipoContrato.SelectedItem.ToString();
+                contrato.numeroIdentificacion = TxtNumeroIdentificacion.Text;
+                contrato.nombreContratista = TxtNombreContratista.Text;
+                contrato.fechaSuscripcion = DateTimePickerFechaContrato.Value.Date;
+                contrato.valorContrato = Convert.ToDouble(TxtValorContrato.Text);
+                GuardarContrato(contrato);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Error!");
+            }
+            
         }
     }
 }
