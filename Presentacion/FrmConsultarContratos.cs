@@ -41,7 +41,7 @@ namespace Presentacion
         private void BtnConsultar_Click(object sender, EventArgs e)
         {
             MostrarDatosFiltrados(CmbTipoContrato.Text,DateTimeFecha.Value.Date);
-
+            EstablecerValores();
         }
         private void EstablecerValores()
         {
